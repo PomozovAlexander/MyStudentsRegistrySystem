@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Регистрация студента</title>
+</head>
+<body>
+<h2>Регистрация студента</h2>
+<form th:action="@{/register}" th:object="${student}" method="post">
+    <label>Имя:</label>
+    <input type="text" th:field="*{name}" required><br>
+    <label>Группа:</label>
+    <select th:field="*{group}">
+        <option th:each="group : ${groups}" th:value="${group}" th:text="${group.number}"></option>
+    </select><br>
+    <button type="submit">Зарегистрировать</button>
+</form>
+<a href="/students">Список студентов</a>
+</body>
+</html>
